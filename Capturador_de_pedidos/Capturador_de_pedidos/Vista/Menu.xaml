@@ -1,0 +1,19 @@
+﻿<Window x:Class="Capturador_de_pedidos.Vista.Menu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Capturador_de_pedidos.Vista"
+        mc:Ignorable="d"
+        Title="Menu" Height="355.851" Width="800" ResizeMode="CanMinimize">
+    <Grid Background="#FFAEAEAE">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="113"/>
+            <RowDefinition Height="337"/>
+        </Grid.RowDefinitions>
+        <Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="451" Source="/Capturador_de_pedidos;component/Img/logo_ferretodo_nuevo.png"/>
+        <Label x:Name="lblName" Content="" HorizontalAlignment="Left" Margin="490,61,0,0" VerticalAlignment="Top" Width="280" FontSize="22" FontWeight="Bold" Height="39"/>
+        <Button x:Name="btnAgregarCliente" Content="Agregar cliente" HorizontalAlignment="Left" Margin="199,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" Height="65" FontFamily="Corbel" FontWeight="Bold" FontSize="20" Click="btnAgregarCliente_Click"/>
+        <Button Content="Salir" HorizontalAlignment="Left" Margin="603,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" Height="65" FontFamily="Corbel" FontWeight="Bold" FontSize="20" Click="Button_Click"/>
+    </Grid>
+</Window>
