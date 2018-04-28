@@ -13,9 +13,9 @@ namespace Capturador_de_pedidos.Controlador
 {
     class ControladorUsuario
     {
-        public String Login(String nick, String pwd)
+        public Usuario Login(String nick, String pwd)
         {
-            String name = "";
+            Usuario _usuario = new Usuario();
             Conexion conn = new Conexion();
             DataTableReader reader = null;
             List<SqlParameter> _Parametros = new List<SqlParameter>();
@@ -27,7 +27,9 @@ namespace Capturador_de_pedidos.Controlador
             if (reader.HasRows)
             {
                 reader.Read();
-                name += reader["Nombre"].ToString() + " " + reader["Apellido"].ToString();
+                _usuario.Id = Int32.Parse(reader["Id"].ToString());
+                _usuario.Nombre = reader["Nombre"].ToString();
+                _usuario.Apellido = reader["Apellido"].ToString();
                 reader.Close();
             }
             else
@@ -35,7 +37,7 @@ namespace Capturador_de_pedidos.Controlador
                 MessageBox.Show("Datos incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             
-            return name;
+            return _usuario;
         }
     }
 }

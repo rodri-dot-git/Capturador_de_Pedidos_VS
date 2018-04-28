@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capturador_de_pedidos.Modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,14 @@ namespace Capturador_de_pedidos.Vista
     /// </summary>
     public partial class Menu : Window
     {
-        public Menu(String n)
+        public Menu(int a, String b, String c)
         {
+            Usuario n = new Usuario();
+            n.Id = a;
+            n.Nombre = b;
+            n.Apellido = c;
             InitializeComponent();
-            lblName.Content = n;
+            lblName.Content = n.Nombre + " " + n.Apellido;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -34,7 +39,6 @@ namespace Capturador_de_pedidos.Vista
         {
             WAgregarCliente OAC = new WAgregarCliente();
             OAC.Show();
-            this.Close();
         }
     }
 }
