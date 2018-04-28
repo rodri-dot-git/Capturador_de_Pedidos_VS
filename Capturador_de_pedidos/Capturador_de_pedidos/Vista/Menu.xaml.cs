@@ -19,10 +19,10 @@ namespace Capturador_de_pedidos.Vista
     /// </summary>
     public partial class Menu : Window
     {
-        public Menu(String name)
+        public Menu(String n)
         {
             InitializeComponent();
-            lblName.Content = name;
+            lblName.Content = n;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
