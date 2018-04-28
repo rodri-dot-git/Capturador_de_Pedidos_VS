@@ -1,6 +1,4 @@
-﻿using Capturador_de_pedidos.Controlador;
-using Capturador_de_pedidos.Modelo;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,21 +15,13 @@ using System.Windows.Shapes;
 namespace Capturador_de_pedidos.Vista
 {
     /// <summary>
-    /// Lógica de interacción para WAgregarCliente.xaml
+    /// Lógica de interacción para WCapturadorPedidos.xaml
     /// </summary>
-    public partial class WAgregarCliente : Window
+    public partial class WCapturadorPedidos : Window
     {
-        public WAgregarCliente()
+        public WCapturadorPedidos()
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            ControladorCliente OC = new ControladorCliente();
-            Cliente c = new Cliente(txtNombreCliente.Text);
-            OC.AddCliente(c);
-        }
-
     }
 }

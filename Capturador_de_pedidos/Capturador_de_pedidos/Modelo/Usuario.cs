@@ -8,19 +8,27 @@ namespace Capturador_de_pedidos.Modelo
 {
     class Usuario
     {
-        private int Id { get; set; }
-        private String Username { get; set; }
-        private String Password { get; set; }
-        private String Nombre { get; set; }
-        private String Apellidos { get; set; }
-        private int Status { get; set; }
+        private int id;
+        private String username;
+        private String password;
+        private String nombre;
+        private String apellido;
+        private int status;
 
-        public Usuario(String a, String b, String c, String d, int e)
+        public int Id { get => id; set => id = value; }
+        public string Username { get => username; set => username = value; }
+        public string Password { get => password; set => password = value; }
+        public string Nombre { get => nombre; set => nombre = value; }
+        public string Apellido { get => apellido; set => apellido = value; }
+        public int Status { get => status; set => status = value; }
+
+        public Usuario(String a, String b, String c, String d, int e, int f)
         {
+            Id = f;
             Username = a;
             Password = b;
             Nombre = c;
-            Apellidos = d;
+            Apellido = d;
             Status = e;
         }
         public Usuario() { }

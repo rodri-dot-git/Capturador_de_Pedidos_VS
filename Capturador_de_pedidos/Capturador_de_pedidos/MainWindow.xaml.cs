@@ -1,4 +1,5 @@
 ﻿using Capturador_de_pedidos.Controlador;
+using Capturador_de_pedidos.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,9 +31,13 @@ namespace Capturador_de_pedidos
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             ControladorUsuario login = new ControladorUsuario();
-            if (login.Login(txtUser.Text, pwdUser.Password.ToString()) != "")
+            if (login.Login(txtUser.Text, pwdUser.Password.ToString()).Nombre != "")
             {
-                Vista.Menu OM = new Vista.Menu(login.Login(txtUser.Text, pwdUser.Password.ToString()));
+                Usuario u = new Usuario();
+                int a = u.Id;
+                String b = u.Nombre;
+                String c = u.Apellido;
+                Vista.Menu OM = new Vista.Menu(a, b, c);
                 OM.Show();
                 this.Close();
             }
