@@ -27,7 +27,7 @@ namespace Capturador_de_pedidos.Controlador
             if (reader.HasRows)
             {
                 reader.Read();
-                _usuario.Id = Int32.Parse(reader["Id"].ToString());
+                _usuario.Id = Int32.Parse(reader["IdUsuario"].ToString());
                 _usuario.Nombre = reader["Nombre"].ToString();
                 _usuario.Apellido = reader["Apellido"].ToString();
                 reader.Close();

@@ -20,9 +20,9 @@ namespace Capturador_de_pedidos.Vista
     /// </summary>
     public partial class Menu : Window
     {
+        Usuario n = new Usuario();
         public Menu(int a, String b, String c)
         {
-            Usuario n = new Usuario();
             n.Id = a;
             n.Nombre = b;
             n.Apellido = c;
@@ -39,6 +39,12 @@ namespace Capturador_de_pedidos.Vista
         {
             WAgregarCliente OAC = new WAgregarCliente();
             OAC.Show();
+        }
+
+        private void btnCapturador_Click(object sender, RoutedEventArgs e)
+        {
+            WCapturadorPedidos WCP = new WCapturadorPedidos(n.Id, n.Nombre + " " + n.Apellido);
+            WCP.Show();
         }
     }
 }

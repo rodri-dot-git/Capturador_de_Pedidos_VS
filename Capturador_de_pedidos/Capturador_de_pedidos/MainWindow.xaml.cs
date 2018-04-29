@@ -31,9 +31,10 @@ namespace Capturador_de_pedidos
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             ControladorUsuario login = new ControladorUsuario();
-            if (login.Login(txtUser.Text, pwdUser.Password.ToString()).Nombre != "")
+            Usuario u = login.Login(txtUser.Text, pwdUser.Password.ToString());
+            if (u.Nombre != null)
             {
-                Usuario u = new Usuario();
+                
                 int a = u.Id;
                 String b = u.Nombre;
                 String c = u.Apellido;

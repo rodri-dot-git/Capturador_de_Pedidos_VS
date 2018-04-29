@@ -15,5 +15,6 @@
         <Label x:Name="lblName" Content="" HorizontalAlignment="Left" Margin="490,61,0,0" VerticalAlignment="Top" Width="280" FontSize="22" FontWeight="Bold" Height="39"/>
         <Button x:Name="btnAgregarCliente" Content="Agregar cliente" HorizontalAlignment="Left" Margin="199,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" Height="65" FontFamily="Corbel" FontWeight="Bold" FontSize="20" Click="btnAgregarCliente_Click"/>
         <Button Content="Salir" HorizontalAlignment="Left" Margin="603,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" Height="65" FontFamily="Corbel" FontWeight="Bold" FontSize="20" Click="Button_Click"/>
+        <Button x:Name="btnCapturador" Content="Capturador" HorizontalAlignment="Left" Margin="10,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" Height="65" FontFamily="Corbel" FontWeight="Bold" FontSize="20" Click="btnCapturador_Click"/>
     </Grid>
 </Window>

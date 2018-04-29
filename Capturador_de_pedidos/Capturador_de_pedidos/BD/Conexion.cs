@@ -11,7 +11,7 @@ namespace Capturador_de_pedidos.BD
     class Conexion
     {
         private SqlConnection _conn = null;
-        string _ConnectionString = "Data Source = (LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Users\\Rodrigo\\source\\repos\\Capturador_de_pedidos\\Capturador_de_pedidos\\BD\\Database.mdf; Integrated Security = True";
+        string _ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\BD\\Database.mdf;Integrated Security = True";
         bool _Conectado = false;
 
         string _NombreProcedimiento = "";
@@ -69,6 +69,7 @@ namespace Capturador_de_pedidos.BD
         }
         public DataTableReader EjecutarTableReader()
         {
+            _Preparado = true;
             if (_Preparado)
             {
                 DataTable dt = new DataTable();
@@ -78,12 +79,14 @@ namespace Capturador_de_pedidos.BD
                 SqlDataAdapter adt = new SqlDataAdapter(cmm);
                 adt.Fill(dt);
                 _Preparado = false;
+                cmm = null;
                 return dt.CreateDataReader();
             }
             else
             {
                 _Preparado = false;
-                throw new Exception("Procedimiento no preparado");
+                //throw new Exception("Procedimiento no preparado");
+                return null;
             }
         }
         public int EjecutarProcedimiento()

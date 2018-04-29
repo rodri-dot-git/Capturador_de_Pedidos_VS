@@ -20,7 +20,7 @@ namespace Capturador_de_pedidos.Controlador
             objA = new Articulo();
             objM = new Marca();
             Conexion conn = new Conexion();
-            DataTableReader reader = null;
+            DataTableReader reader;
             List<SqlParameter> _Parametros = new List<SqlParameter>();
             conn.Conectar();
             _Parametros.Add(new SqlParameter("@param", param));
@@ -29,12 +29,12 @@ namespace Capturador_de_pedidos.Controlador
             if (reader.HasRows)
             {
                 reader.Read();
-                objA.Id = Int32.Parse(reader["A.Id"].ToString());
-                objA.Codigo = reader["A.Codigo"].ToString();
-                objA.Descripcion = reader["A.Descripcion"].ToString();
-                objA.Precio = Double.Parse(reader["A.Precio"].ToString());
-                objM.Id = Int32.Parse(reader["M.Id"].ToString());
-                objM.Nombre = reader["M.Nombre"].ToString();
+                objA.Id = Int32.Parse(reader["IdArticulo"].ToString());
+                objA.Codigo = reader["Codigo"].ToString();
+                objA.Descripcion = reader["Descripcion"].ToString();
+                objA.Precio = Double.Parse(reader["Precio"].ToString());
+                objM.Id = Int32.Parse(reader["IdMarca"].ToString());
+                objM.Nombre = reader["Nombre"].ToString();
                 objA.Marca = objM;
                 reader.Close();
             }
