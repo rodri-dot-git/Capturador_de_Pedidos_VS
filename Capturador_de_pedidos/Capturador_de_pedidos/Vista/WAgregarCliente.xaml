@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Capturador_de_pedidos.Vista"
         mc:Ignorable="d"
-        Title="Agregar Cliente" Height="292.021" Width="800" ResizeMode="NoResize">
+        Title="Agregar Cliente" Height="292.021" Width="800" ResizeMode="NoResize" Icon="/Capturador_de_pedidos;component/Img/logo_ferretodo_nuevo.png">
     <Grid Background="#FFAEAEAE">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>

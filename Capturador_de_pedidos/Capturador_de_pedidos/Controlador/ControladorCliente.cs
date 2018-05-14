@@ -13,23 +13,23 @@ namespace Capturador_de_pedidos.Controlador
 {
     class ControladorCliente
     {
-        public void AddCliente(Cliente c)
+        public void AddCliente(string c)
         {
             List<SqlParameter> _Parametros = new List<SqlParameter>();
             Conexion conn = new Conexion();
             conn.Conectar();
-            _Parametros.Add(new SqlParameter("@nom", c.Nombre));
+            _Parametros.Add(new SqlParameter("@nom", c));
             conn.PrepararProcedimiento("sp_InsertCliente", _Parametros);
             conn.EjecutarProcedimiento();
 
-            MessageBox.Show("Se agrego a: " + c.Nombre, "Cliente", MessageBoxButton.OK);
+            MessageBox.Show("Se agrego a: " + c, "Cliente", MessageBoxButton.OK);
         }
         public int BuscaId(String param)
         {
             int id = 0;
             SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\BD\\Database.mdf;Integrated Security = True");
             List<SqlParameter> _iParametros = new List<SqlParameter>();
-            String sqlConsulta = "SELECT IdCliente FROM Cliente WHERE Nombre LIKE '" + param + "');";
+            String sqlConsulta = "SELECT IdCliente FROM Cliente WHERE Nombre = '" + param + "'";
             conn.Open();
             SqlCommand comando = new SqlCommand(sqlConsulta, conn);
             SqlDataReader reader = comando.ExecuteReader();

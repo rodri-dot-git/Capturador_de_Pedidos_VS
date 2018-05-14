@@ -5,42 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Capturador_de_pedidos.Vista"
         mc:Ignorable="d"
-        Title="Captura" Height="960" Width="1366" SnapsToDevicePixels="True" Icon="/Capturador_de_pedidos;component/Img/logo_ferretodo_nuevo.png" WindowState="Maximized" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontFamily="Corbel" FontSize="16" ScrollViewer.VerticalScrollBarVisibility="Auto">
-    <Grid Background="#FFAEAEAE">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="113"/>
-            <RowDefinition Height="227"/>
-            <RowDefinition Height="448"/>
-        </Grid.RowDefinitions>
-        <Image HorizontalAlignment="Left" Height="100" Margin="14,4,0,0" VerticalAlignment="Top" Width="454" Source="/Capturador_de_pedidos;component/Img/logo_ferretodo_nuevo.png"/>
-        <Label x:Name="lblUser" Content="" HorizontalAlignment="Left" Height="59" Margin="510,45,0,0" VerticalAlignment="Top" Width="814" FontSize="36"/>
-        <Label Content="Cliente" HorizontalAlignment="Left" Margin="883,22,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Corbel" FontSize="16" Height="30" Width="57"/>
-        <ComboBox x:Name="cmbClientes" HorizontalAlignment="Left" Margin="960,22,0,0" Grid.Row="1" VerticalAlignment="Top" Width="364" Height="24" SelectionChanged="cmbClientes_SelectionChanged"/>
-        <Label Content="Código" HorizontalAlignment="Left" Margin="83,96,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Corbel" Height="30" Width="57"/>
-        <Label Content="Cantidad" HorizontalAlignment="Left" Margin="320,96,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="70"/>
-        <TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="155,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" AcceptsTab="True" TabIndex="1"/>
-        <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="440,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="75" BorderBrush="White" TabIndex="2"/>
-        <Button x:Name="btnMenos" Content="-" HorizontalAlignment="Left" Margin="410,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="30" Height="23" BorderBrush="White" Background="White" IsTabStop="False" Click="btnMenos_Click"/>
-        <Button x:Name="btnMas" Content="+" HorizontalAlignment="Left" Margin="515,100,813,105" Grid.Row="1" VerticalAlignment="Top" Width="30" Height="23" Background="White" BorderBrush="White" AutomationProperties.HelpText="Incrementar cantidad" IsTabStop="False" Click="btnMas_Click"/>
-        <Label Content="Precio" HorizontalAlignment="Left" Margin="83,151,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="52"/>
-        <TextBox x:Name="txtPrecio" HorizontalAlignment="Left" Height="23" Margin="155,151,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" IsReadOnly="True"/>
-        <TextBox x:Name="txtSubTotal" HorizontalAlignment="Left" Height="23" Margin="691,102,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" IsReadOnly="True" IsTabStop="False"/>
-        <TextBox x:Name="txtIVA" HorizontalAlignment="Left" Height="23" Margin="691,134,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" IsReadOnly="True" IsTabStop="False"/>
-        <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="23" Margin="691,165,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" IsReadOnly="True" IsTabStop="False"/>
-        <Label Content="Sub-Total" HorizontalAlignment="Left" Margin="602,99,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="80"/>
-        <Label Content="I.V.A." HorizontalAlignment="Left" Margin="630,131,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="52"/>
-        <Label Content="Total" HorizontalAlignment="Left" Margin="630,161,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="52"/>
-        <Button x:Name="btnAgregar" Content="Agregar Elemento" HorizontalAlignment="Left" Height="42" Margin="340,146,0,0" Grid.Row="1" VerticalAlignment="Top" Width="220" Click="btnAgregar_Click"/>
-        <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="800,136,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" IsTabStop="False" Height="54" Click="btnGuardar_Click"/>
-        <DataGrid x:Name="dgrPedido" HorizontalAlignment="Left" Height="567" Margin="10,10,0,-128" Grid.Row="2" VerticalAlignment="Top" Width="1338" Background="#FFAEAEAE" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Marca" Binding="{Binding Articulo.Marca.Nombre}"/>
-                <DataGridTextColumn Header="Codigo" Binding="{Binding Articulo.Codigo}"/>
-                <DataGridTextColumn Header="Descripcion" Binding="{Binding Articulo.Descripcion}"/>
-                <DataGridTextColumn Header="Precio" Binding="{Binding PrecioVenta}"/>
-                <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad}"/>
-                <DataGridTextColumn Header="SubTotal" Binding="{Binding SubTotal}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>
+        Title="Captura" Height="843" Width="1366" SnapsToDevicePixels="True" Icon="/Capturador_de_pedidos;component/Img/logo_ferretodo_nuevo.png" WindowState="Maximized" ScrollViewer.HorizontalScrollBarVisibility="Auto" FontFamily="Corbel" FontSize="16" ScrollViewer.VerticalScrollBarVisibility="Auto" ResizeMode="CanResizeWithGrip" SizeToContent="WidthAndHeight">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+        <Grid Background="#FFAEAEAE">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="113"/>
+                <RowDefinition Height="227"/>
+                <RowDefinition Height="448"/>
+            </Grid.RowDefinitions>
+            <Image HorizontalAlignment="Left" Height="100" Margin="14,4,0,0" VerticalAlignment="Top" Width="454" Source="/Capturador_de_pedidos;component/Img/logo_ferretodo_nuevo.png"/>
+            <Label x:Name="lblUser" Content="" HorizontalAlignment="Left" Height="59" Margin="510,45,0,0" VerticalAlignment="Top" Width="814" FontSize="36"/>
+            <Label Content="Cliente" HorizontalAlignment="Left" Margin="883,22,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Corbel" FontSize="16" Height="30" Width="57"/>
+            <ComboBox x:Name="cmbClientes" HorizontalAlignment="Left" Margin="960,22,0,0" Grid.Row="1" VerticalAlignment="Top" Width="364" Height="24" SelectionChanged="cmbClientes_SelectionChanged" IsEditable="True" IsManipulationEnabled="True"/>
+            <Label Content="Código" HorizontalAlignment="Left" Margin="83,96,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Corbel" Height="30" Width="57"/>
+            <Label Content="Cantidad" HorizontalAlignment="Left" Margin="320,96,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="70"/>
+            <TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="155,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" AcceptsTab="True" TabIndex="1" KeyUp="txtCodigo_KeyUp"/>
+            <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="440,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="75" BorderBrush="White" TabIndex="2"/>
+            <Button x:Name="btnMenos" Content="-" HorizontalAlignment="Left" Margin="410,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="30" Height="23" BorderBrush="White" Background="White" IsTabStop="False" Click="btnMenos_Click"/>
+            <Button x:Name="btnMas" Content="+" HorizontalAlignment="Left" Margin="515,100,813,105" Grid.Row="1" VerticalAlignment="Top" Width="30" Height="23" Background="White" BorderBrush="White" AutomationProperties.HelpText="Incrementar cantidad" IsTabStop="False" Click="btnMas_Click"/>
+            <Label Content="Precio" HorizontalAlignment="Left" Margin="83,151,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="52"/>
+            <TextBox x:Name="txtPrecio" HorizontalAlignment="Left" Height="23" Margin="155,151,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
+            <TextBox x:Name="txtSubTotal" HorizontalAlignment="Left" Height="23" Margin="691,102,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" IsReadOnly="True" IsTabStop="False" IsReadOnlyCaretVisible="True"/>
+            <TextBox x:Name="txtIVA" HorizontalAlignment="Left" Height="23" Margin="691,134,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" IsReadOnly="True" IsTabStop="False" IsReadOnlyCaretVisible="True"/>
+            <TextBox x:Name="txtTotal" HorizontalAlignment="Left" Height="23" Margin="691,165,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" IsReadOnly="True" IsTabStop="False" IsReadOnlyCaretVisible="True"/>
+            <Label Content="Sub-Total" HorizontalAlignment="Left" Margin="602,99,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="80"/>
+            <Label Content="I.V.A." HorizontalAlignment="Left" Margin="630,131,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="52"/>
+            <Label Content="Total" HorizontalAlignment="Left" Margin="630,161,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="52"/>
+            <Button x:Name="btnAgregar" Content="Agregar Elemento" HorizontalAlignment="Left" Height="42" Margin="340,146,0,0" Grid.Row="1" VerticalAlignment="Top" Width="220" Click="btnAgregar_Click"/>
+            <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="800,136,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" IsTabStop="False" Height="54" Click="btnGuardar_Click"/>
+            <DataGrid x:Name="dgrPedido" HorizontalAlignment="Left" Height="429" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="1262" Background="#FFAEAEAE" AutoGenerateColumns="False" CellEditEnding="dgrPedido_CellEditEnding" PreparingCellForEdit="dgrPedido_PreparingCellForEdit" MouseUp="dgrPedido_MouseUp" KeyUp="dgrPedido_KeyUp" SourceUpdated="dgrPedido_SourceUpdated" CurrentCellChanged="dgrPedido_CurrentCellChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Marca" Binding="{Binding Articulo.Marca.Nombre}"/>
+                    <DataGridTextColumn Header="Codigo" Binding="{Binding Articulo.Codigo}"/>
+                    <DataGridTextColumn Header="Descripcion" Binding="{Binding Articulo.Descripcion}"/>
+                    <DataGridTextColumn Header="Precio" Binding="{Binding PrecioVenta}"/>
+                    <DataGridTextColumn Header="Cantidad" Binding="{Binding Cantidad, Mode=TwoWay}"/>
+                    <DataGridTextColumn Header="SubTotal" Binding="{Binding SubTotal}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <TextBox x:Name="txtDescripcon" HorizontalAlignment="Left" Height="23" Margin="155,50,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="616" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
+        </Grid>
+    </ScrollViewer>
 </Window>

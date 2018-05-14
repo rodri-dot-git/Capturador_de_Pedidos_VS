@@ -7,13 +7,13 @@ using System.Windows;
 // La información general de un ensamblado se controla mediante el siguiente 
 // conjunto de atributos. Cambie estos valores de atributo para modificar la información
 // asociada con un ensamblado.
-[assembly: AssemblyTitle("Capturador_de_pedidos")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Capturador de pedidos")]
+[assembly: AssemblyDescription("Este es un sistema de captura de pedidos para la empresa Industrial Ferretera de Monclova, S.A de C.V. por Rodrigo Eugenio de León Castilla.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Capturador_de_pedidos")]
-[assembly: AssemblyCopyright("Copyright ©  2018")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyCompany("Industrial Ferretera de Monclova, S.A de C.V.")]
+[assembly: AssemblyProduct("Capturador de pedidos")]
+[assembly: AssemblyCopyright("Copyright ©  2018 Rodrigo Eugenio de León Castilla")]
+[assembly: AssemblyTrademark("Rodrigo Eugenio de León Castilla Developments")]
 [assembly: AssemblyCulture("")]
 
 // Si establece ComVisible en false, los tipos de este ensamblado no estarán visibles 
@@ -53,3 +53,5 @@ using System.Windows;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: NeutralResourcesLanguage("es-MX")]
+

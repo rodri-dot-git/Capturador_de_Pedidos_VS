@@ -30,6 +30,6 @@ namespace Capturador_de_pedidos.Modelo
         public string Clave { get => clave; set => clave = value; }
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public double Precio { get => precio; set => precio = value; }
-        internal Marca Marca { get => marca; set => marca = value; }
+        public Marca Marca { get => marca; set => marca = value; }
     }
 }

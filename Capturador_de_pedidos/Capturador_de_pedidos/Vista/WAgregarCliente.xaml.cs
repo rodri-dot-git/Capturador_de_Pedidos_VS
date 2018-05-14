@@ -29,8 +29,7 @@ namespace Capturador_de_pedidos.Vista
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             ControladorCliente OC = new ControladorCliente();
-            Cliente c = new Cliente(txtNombreCliente.Text);
-            OC.AddCliente(c);
+            OC.AddCliente(txtNombreCliente.Text);
         }
 
     }

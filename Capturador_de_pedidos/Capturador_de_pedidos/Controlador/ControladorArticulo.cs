@@ -40,10 +40,35 @@ namespace Capturador_de_pedidos.Controlador
             }
             else
             {
+                objA = null;
                 MessageBox.Show("Articulo no encontrado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
             return objA;
+        }
+        public string getArticuloLike(string param)
+        {
+            objA = new Articulo();
+            objM = new Marca();
+            Conexion conn = new Conexion();
+            DataTableReader reader;
+            List<SqlParameter> _Parametros = new List<SqlParameter>();
+            conn.Conectar();
+            _Parametros.Add(new SqlParameter("@param", param));
+            conn.PrepararProcedimiento("dbo.sp_SelectArticuloLike", _Parametros);
+            reader = conn.EjecutarTableReader();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                objA.Descripcion = reader["Descripcion"].ToString();
+                reader.Close();
+            }
+            else
+            {
+                objA.Descripcion = "No encontrado";
+            }
+
+            return objA.Descripcion;
         }
     }
 }
