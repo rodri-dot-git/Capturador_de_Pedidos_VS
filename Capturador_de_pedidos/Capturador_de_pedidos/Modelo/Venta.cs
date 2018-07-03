@@ -14,6 +14,8 @@ namespace Capturador_de_pedidos.Modelo
         private double iVA;
         private double total;
         private int folio;
+        private string date;
+        private Cliente c;
 
         public int IdCliente { get => idCliente; set => idCliente = value; }
         public int IdUsuario { get => idUsuario; set => idUsuario = value; }
@@ -21,6 +23,9 @@ namespace Capturador_de_pedidos.Modelo
         public double IVA { get => iVA; set => iVA = value; }
         public double Total { get => total; set => total = value; }
         public int Folio { get => folio; set => folio = value; }
+        public string Date { get => date; set => date = value; }
+        public Cliente C { get => c; set => c = value; }
+
         public Venta() { }
         public Venta(int cl, int us)
         {

@@ -60,6 +60,8 @@ namespace Capturador_de_pedidos.Vista
             }
             dgrPedido.ItemsSource = null;
             dgrPedido.ItemsSource = collection;
+            txtCantidad.Text = "1";
+            txtCodigo.Text = "";
         }
 
         private void btnMas_Click(object sender, RoutedEventArgs e)

@@ -46,5 +46,17 @@ namespace Capturador_de_pedidos.Vista
             WCapturadorPedidos WCP = new WCapturadorPedidos(n.Id, n.Nombre + " " + n.Apellido);
             WCP.Show();
         }
+
+        private void btnVerPedidos_Click(object sender, RoutedEventArgs e)
+        {
+            Busqueda B = new Busqueda();
+            B.Show();
+        }
+
+        private void btnAgregarProducto_Click(object sender, RoutedEventArgs e)
+        {
+            AgregarArticulo AA = new AgregarArticulo();
+            AA.Show();
+        }
     }
 }

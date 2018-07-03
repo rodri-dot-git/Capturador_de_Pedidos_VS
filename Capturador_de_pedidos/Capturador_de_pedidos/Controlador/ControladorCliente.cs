@@ -2,6 +2,7 @@
 using Capturador_de_pedidos.Modelo;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -27,7 +28,8 @@ namespace Capturador_de_pedidos.Controlador
         public int BuscaId(String param)
         {
             int id = 0;
-            SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\BD\\Database.mdf;Integrated Security = True");
+            string connS = ConfigurationManager.ConnectionStrings["Capturador_de_pedidos.Properties.Settings.DatabaseConnectionString"].ToString();
+            SqlConnection conn = new SqlConnection(connS);
             List<SqlParameter> _iParametros = new List<SqlParameter>();
             String sqlConsulta = "SELECT IdCliente FROM Cliente WHERE Nombre = '" + param + "'";
             conn.Open();

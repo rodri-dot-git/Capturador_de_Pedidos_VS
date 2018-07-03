@@ -4,7 +4,6 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using Capturador_de_pedidos.BD;
 using Capturador_de_pedidos.Modelo;
@@ -15,6 +14,31 @@ namespace Capturador_de_pedidos.Controlador
     {
         Articulo objA = null;
         Marca objM = null;
+
+        public void AddArticulo(Articulo a)
+        {
+            List<SqlParameter> _Parametros = new List<SqlParameter>();
+            Conexion conn = new Conexion();
+            conn.Conectar();
+            _Parametros.Add(new SqlParameter("@marca", a.Marca.Id));
+            _Parametros.Add(new SqlParameter("@codigo", a.Codigo));
+            _Parametros.Add(new SqlParameter("@clave", a.Clave));
+            _Parametros.Add(new SqlParameter("@desc", a.Descripcion));
+            _Parametros.Add(new SqlParameter("@precio", a.Precio));
+            _Parametros.Add(new SqlParameter("@caja", a.Caja));
+            conn.PrepararProcedimiento("sp_InsertArticulo", _Parametros);
+            try
+            {
+                conn.EjecutarProcedimiento();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("ERROR: " + ex.Message, "Error");
+            }
+            catch { }
+            
+            MessageBox.Show("Se agrego articulo", "Articulo" , MessageBoxButton.OK);
+        }
         public Articulo getArticulo(string param)
         {
             objA = new Articulo();

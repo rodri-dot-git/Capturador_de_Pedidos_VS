@@ -37,5 +37,131 @@ namespace Capturador_de_pedidos.Controlador
             conn.EjecutarProcedimiento();
             conn.Desconectar();
         }
+        public ObservableCollection<DetalleVenta> BuscarPorFolio(int folio)
+        {
+            ObservableCollection<DetalleVenta> ventas = new ObservableCollection<DetalleVenta>();
+            DataTableReader reader;
+            Venta v = null;
+            DetalleVenta dv = null;
+            Articulo a = null;
+            Marca m = null;
+            Cliente c = null;
+            Conexion con = null;
+            List<SqlParameter> _Parametros = new List<SqlParameter>();
+            con = new Conexion();
+            con.Conectar();
+            _Parametros.Add(new SqlParameter("@folio", folio));
+            con.PrepararProcedimiento("sp_BusquedaFolio", _Parametros);
+            reader = con.EjecutarTableReader();
+            while (reader.Read())
+            {
+                v = new Venta();
+                dv = new DetalleVenta();
+                a = new Articulo();
+                c = new Cliente();
+                m = new Marca();
+                v.Folio = Int32.Parse(reader["Folio"].ToString());
+                a.Codigo = reader["Codigo"].ToString();
+                a.Descripcion = reader["Descripcion"].ToString();
+                a.Precio = Double.Parse(reader["PrecioVenta"].ToString());
+                m.Nombre = reader["Nombre"].ToString();
+                a.Marca = m;
+                dv.Articulo = a;
+                dv.Cantidad = Int32.Parse(reader["Cantidad"].ToString());
+                dv.PrecioVenta = a.Precio;
+                v.SubTotal = Double.Parse(reader["SubTotal"].ToString());
+                v.IVA = Double.Parse(reader["IVA"].ToString());
+                v.Total = Double.Parse(reader["Total"].ToString());
+                v.Date = reader["Fecha"].ToString();
+                dv.SubTotal = dv.PrecioVenta * dv.Cantidad;
+                c.Nombre = reader["Cliente"].ToString();
+                v.C = c;
+                v.IdUsuario = Int32.Parse(reader["IdUsuario"].ToString());
+                dv.Venta = v;
+                ventas.Add(dv);
+            }
+            return ventas;
+        }
+        public ObservableCollection<Venta> BuscarPorFecha(DateTime d1, DateTime d2)
+        {
+            ObservableCollection<Venta> ventas = new ObservableCollection<Venta>();
+            DataTableReader reader;
+            Venta v = null;
+            Cliente c = null;
+            Conexion con = null;
+            List<SqlParameter> _Parametros = new List<SqlParameter>();
+            con = new Conexion();
+            con.Conectar();
+            _Parametros.Add(new SqlParameter("@d1", SqlDbType.DateTime) { Value = d1 });
+            _Parametros.Add(new SqlParameter("@d2", SqlDbType.DateTime) { Value = d2 });
+            con.PrepararProcedimiento("sp_BusquedaFecha", _Parametros);
+            reader = con.EjecutarTableReader();
+            while (reader.Read())
+            {
+                v = new Venta();
+                c = new Cliente();
+                v.Folio = Int32.Parse(reader["Id"].ToString());
+                c.Nombre = reader["Nombre"].ToString();
+                v.Total = Double.Parse(reader["Total"].ToString());
+                v.C = c;
+                v.Date = reader["fecha"].ToString();
+                ventas.Add(v);
+            }
+            return ventas;
+        }
+        public ObservableCollection<Venta> BuscarPorNombre(string nombre)
+        {
+            ObservableCollection<Venta> ventas = new ObservableCollection<Venta>();
+            DataTableReader reader;
+            Venta v = null;
+            Cliente c = null;
+            Conexion con = null;
+            List<SqlParameter> _Parametros = new List<SqlParameter>();
+            con = new Conexion();
+            con.Conectar();
+            _Parametros.Add(new SqlParameter("@nombre", nombre));
+            con.PrepararProcedimiento("sp_BusquedaCliente", _Parametros);
+            reader = con.EjecutarTableReader();
+            while (reader.Read())
+            {
+                v = new Venta();
+                c = new Cliente();
+                v.Folio = Int32.Parse(reader["Id"].ToString());
+                c.Nombre = reader["Nombre"].ToString();
+                v.Total = Double.Parse(reader["Total"].ToString());
+                v.C = c;
+                v.Date = reader["fecha"].ToString();
+                ventas.Add(v);
+            }
+            return ventas;
+        }
+        public ObservableCollection<Venta> BuscarPorNombreFecha(string name, DateTime d1, DateTime d2)
+        {
+            ObservableCollection<Venta> ventas = new ObservableCollection<Venta>();
+            DataTableReader reader;
+            Venta v = null;
+            Cliente c = null;
+            Conexion con = null;
+            List<SqlParameter> _Parametros = new List<SqlParameter>();
+            con = new Conexion();
+            con.Conectar();
+            _Parametros.Add(new SqlParameter("@nombre", name));
+            _Parametros.Add(new SqlParameter("@d1", SqlDbType.DateTime) { Value = d1 });
+            _Parametros.Add(new SqlParameter("@d2", SqlDbType.DateTime) { Value = d2 });
+            con.PrepararProcedimiento("sp_BusquedaNombreFecha", _Parametros);
+            reader = con.EjecutarTableReader();
+            while (reader.Read())
+            {
+                v = new Venta();
+                c = new Cliente();
+                v.Folio = Int32.Parse(reader["Id"].ToString());
+                c.Nombre = reader["Nombre"].ToString();
+                v.Total = Double.Parse(reader["Total"].ToString());
+                v.C = c;
+                v.Date = reader["fecha"].ToString();
+                ventas.Add(v);
+            }
+            return ventas;
+        }
     }
 }

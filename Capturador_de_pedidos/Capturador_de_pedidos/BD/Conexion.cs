@@ -5,13 +5,14 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Capturador_de_pedidos.BD
 {
     class Conexion
     {
         private SqlConnection _conn = null;
-        string _ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\BD\\Database.mdf;Integrated Security = True";
+        string _ConnectionString = ConfigurationManager.ConnectionStrings["Capturador_de_pedidos.Properties.Settings.DatabaseConnectionString"].ToString();
         bool _Conectado = false;
 
         string _NombreProcedimiento = "";

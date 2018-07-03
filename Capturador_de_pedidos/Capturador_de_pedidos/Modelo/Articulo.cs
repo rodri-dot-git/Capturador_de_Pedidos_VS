@@ -14,6 +14,7 @@ namespace Capturador_de_pedidos.Modelo
         private String descripcion;
         private double precio;
         private Marca marca;
+        private int caja;
         public Articulo() { }
         public Articulo(int a, String b, String c, String d, double e, Marca f)
         {
@@ -31,5 +32,6 @@ namespace Capturador_de_pedidos.Modelo
         public string Descripcion { get => descripcion; set => descripcion = value; }
         public double Precio { get => precio; set => precio = value; }
         public Marca Marca { get => marca; set => marca = value; }
+        public int Caja { get => caja; set => caja = value; }
     }
 }

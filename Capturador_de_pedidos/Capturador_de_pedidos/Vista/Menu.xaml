@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Capturador_de_pedidos.Vista"
         mc:Ignorable="d"
-        Title="Menu" Height="355.851" Width="800" ResizeMode="CanMinimize">
+        Title="Menu" Height="355.851" Width="981.939" ResizeMode="CanMinimize">
     <Grid Background="#FFAEAEAE">
         <Grid.RowDefinitions>
             <RowDefinition Height="113"/>
@@ -14,7 +14,9 @@
         <Image HorizontalAlignment="Left" Height="100" Margin="10,10,0,0" VerticalAlignment="Top" Width="451" Source="/Capturador_de_pedidos;component/Img/logo_ferretodo_nuevo.png"/>
         <Label x:Name="lblName" Content="" HorizontalAlignment="Left" Margin="490,61,0,0" VerticalAlignment="Top" Width="280" FontSize="22" FontWeight="Bold" Height="39"/>
         <Button x:Name="btnAgregarCliente" Content="Agregar cliente" HorizontalAlignment="Left" Margin="199,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" Height="65" FontFamily="Corbel" FontWeight="Bold" FontSize="20" Click="btnAgregarCliente_Click"/>
-        <Button Content="Salir" HorizontalAlignment="Left" Margin="603,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" Height="65" FontFamily="Corbel" FontWeight="Bold" FontSize="20" Click="Button_Click"/>
+        <Button Content="Salir" HorizontalAlignment="Left" Margin="793,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" Height="65" FontFamily="Corbel" FontWeight="Bold" FontSize="20" Click="Button_Click"/>
         <Button x:Name="btnCapturador" Content="Capturador" HorizontalAlignment="Left" Margin="10,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" Height="65" FontFamily="Corbel" FontWeight="Bold" FontSize="20" Click="btnCapturador_Click"/>
+        <Button x:Name="btnVerPedidos" Content="Ver pedidos" HorizontalAlignment="Left" Margin="402,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" Height="65" FontFamily="Corbel" FontWeight="Bold" FontSize="20" Click="btnVerPedidos_Click"/>
+        <Button x:Name="btnAgregarProducto" Content="Agregar producto" HorizontalAlignment="Left" Margin="600,73,0,0" Grid.Row="1" VerticalAlignment="Top" Width="167" Height="65" FontFamily="Corbel" FontWeight="Bold" FontSize="20" Click="btnAgregarProducto_Click"/>
     </Grid>
 </Window>

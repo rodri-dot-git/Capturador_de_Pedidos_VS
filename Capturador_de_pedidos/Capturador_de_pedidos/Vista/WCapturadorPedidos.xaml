@@ -16,7 +16,7 @@
             <Image HorizontalAlignment="Left" Height="100" Margin="14,4,0,0" VerticalAlignment="Top" Width="454" Source="/Capturador_de_pedidos;component/Img/logo_ferretodo_nuevo.png"/>
             <Label x:Name="lblUser" Content="" HorizontalAlignment="Left" Height="59" Margin="510,45,0,0" VerticalAlignment="Top" Width="814" FontSize="36"/>
             <Label Content="Cliente" HorizontalAlignment="Left" Margin="883,22,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Corbel" FontSize="16" Height="30" Width="57"/>
-            <ComboBox x:Name="cmbClientes" HorizontalAlignment="Left" Margin="960,22,0,0" Grid.Row="1" VerticalAlignment="Top" Width="364" Height="24" SelectionChanged="cmbClientes_SelectionChanged" IsEditable="True" IsManipulationEnabled="True"/>
+            <ComboBox x:Name="cmbClientes" HorizontalAlignment="Left" Margin="960,22,0,0" Grid.Row="1" VerticalAlignment="Top" Width="364" Height="24" SelectionChanged="cmbClientes_SelectionChanged" IsEditable="True" IsManipulationEnabled="True" AllowDrop="True"/>
             <Label Content="Código" HorizontalAlignment="Left" Margin="83,96,0,0" Grid.Row="1" VerticalAlignment="Top" FontFamily="Corbel" Height="30" Width="57"/>
             <Label Content="Cantidad" HorizontalAlignment="Left" Margin="320,96,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="70"/>
             <TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="155,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" AcceptsTab="True" TabIndex="1" KeyUp="txtCodigo_KeyUp"/>
