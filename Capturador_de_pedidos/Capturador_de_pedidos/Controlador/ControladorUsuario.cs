@@ -19,24 +19,39 @@ namespace Capturador_de_pedidos.Controlador
             Conexion conn = new Conexion();
             DataTableReader reader = null;
             List<SqlParameter> _Parametros = new List<SqlParameter>();
-            conn.Conectar();
-            _Parametros.Add(new SqlParameter("@Usuario", nick));
-            _Parametros.Add(new SqlParameter("@Password", pwd));
-            conn.PrepararProcedimiento("dbo.sp_Login", _Parametros);
-            reader = conn.EjecutarTableReader();
-            if (reader.HasRows)
+            try
             {
-                reader.Read();
-                _usuario.Id = Int32.Parse(reader["IdUsuario"].ToString());
-                _usuario.Nombre = reader["Nombre"].ToString();
-                _usuario.Apellido = reader["Apellido"].ToString();
-                reader.Close();
+                conn.Conectar();
+                _Parametros.Add(new SqlParameter("@Usuario", nick));
+                _Parametros.Add(new SqlParameter("@Password", pwd));
+                conn.PrepararProcedimiento("dbo.sp_Login", _Parametros);
+                reader = conn.EjecutarTableReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    _usuario.Id = Int32.Parse(reader["IdUsuario"].ToString());
+                    _usuario.Nombre = reader["Nombre"].ToString();
+                    _usuario.Apellido = reader["Apellido"].ToString();
+                    reader.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Datos incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (SqlException ex)
             {
-                MessageBox.Show("Datos incorrectos", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error: " + ex.Message, "Error");
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
+            finally
+            {
+                conn.Desconectar();
+            }
+
             return _usuario;
         }
     }

@@ -41,27 +41,34 @@ namespace Capturador_de_pedidos.Vista
         private void btnAgregar_Click(object sender, RoutedEventArgs e)
         {
             ControladorArticulo CA = new ControladorArticulo();
-            art = CA.getArticulo(txtCodigo.Text);
-            if (art != null)
+            try
             {
-                txtPrecio.Text = art.Precio.ToString();
-                dv.Venta = v;
-                dv.Articulo = art;
-                dv.Cantidad = Int32.Parse(txtCantidad.Text);
-                dv.PrecioVenta = art.Precio;
-                dv.SubTotal = dv.PrecioVenta * dv.Cantidad;
-                collection.Add(new DetalleVenta(v, art, Int32.Parse(txtCantidad.Text), art.Precio, Math.Round(dv.PrecioVenta * dv.Cantidad, 2)));
-                collection.OrderByDescending(x => x.Articulo.Marca.Nombre);
+                art = CA.getArticulo(txtCodigo.Text);
+                if (art != null)
+                {
+                    txtPrecio.Text = art.Precio.ToString();
+                    dv.Venta = v;
+                    dv.Articulo = art;
+                    dv.Cantidad = Int32.Parse(txtCantidad.Text);
+                    dv.PrecioVenta = art.Precio;
+                    dv.SubTotal = dv.PrecioVenta * dv.Cantidad;
+                    collection.Add(new DetalleVenta(v, art, Int32.Parse(txtCantidad.Text), art.Precio, Math.Round(dv.PrecioVenta * dv.Cantidad, 2)));
+                    collection.OrderByDescending(x => x.Articulo.Marca.Nombre);
+                    dgrPedido.ItemsSource = collection;
+                    setTotal();
+                    v.SubTotal = Double.Parse(txtSubTotal.Text);
+                    v.IVA = Double.Parse(txtIVA.Text);
+                    v.Total = Double.Parse(txtTotal.Text);
+                }
+                dgrPedido.ItemsSource = null;
                 dgrPedido.ItemsSource = collection;
-                setTotal();
-                v.SubTotal = Double.Parse(txtSubTotal.Text);
-                v.IVA = Double.Parse(txtIVA.Text);
-                v.Total = Double.Parse(txtTotal.Text);
+                txtCantidad.Text = "1";
+                txtCodigo.Text = "";
             }
-            dgrPedido.ItemsSource = null;
-            dgrPedido.ItemsSource = collection;
-            txtCantidad.Text = "1";
-            txtCodigo.Text = "";
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
         }
 
         private void btnMas_Click(object sender, RoutedEventArgs e)
@@ -81,6 +88,8 @@ namespace Capturador_de_pedidos.Vista
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
             ControladorVenta CV = new ControladorVenta();
+            try
+            {
                 if (cmbClientes.SelectedValue != null) v.IdCliente = CC.BuscaId(cmbClientes.SelectedValue.ToString());
                 else v.IdCliente = 0;
                 if (v.IdCliente != 0)
@@ -89,6 +98,11 @@ namespace Capturador_de_pedidos.Vista
                     PDFMaker.NewPedido(collection);
                     Close();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
         }
 
         private void cmbClientes_SelectionChanged(object sender, SelectionChangedEventArgs e)

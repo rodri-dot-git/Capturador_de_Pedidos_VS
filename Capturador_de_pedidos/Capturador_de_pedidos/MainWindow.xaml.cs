@@ -31,16 +31,22 @@ namespace Capturador_de_pedidos
         private void btnLogin_Click(object sender, RoutedEventArgs e)
         {
             ControladorUsuario login = new ControladorUsuario();
-            Usuario u = login.Login(txtUser.Text, pwdUser.Password.ToString());
-            if (u.Nombre != null)
+            try
             {
-                
-                int a = u.Id;
-                String b = u.Nombre;
-                String c = u.Apellido;
-                Vista.Menu OM = new Vista.Menu(a, b, c);
-                OM.Show();
-                this.Close();
+                Usuario u = login.Login(txtUser.Text, pwdUser.Password.ToString());
+                if (u.Nombre != null)
+                {
+                    int a = u.Id;
+                    String b = u.Nombre;
+                    String c = u.Apellido;
+                    Vista.Menu OM = new Vista.Menu(a, b, c);
+                    OM.Show();
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
             }
         }
     }

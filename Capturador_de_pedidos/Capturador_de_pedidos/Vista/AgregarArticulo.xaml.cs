@@ -40,20 +40,26 @@ namespace Capturador_de_pedidos.Vista
             Articulo a = new Articulo();
             Marca m = new Marca();
             ControladorArticulo CA = new ControladorArticulo();
-            if(cmbMarca.SelectedIndex != 0)
+            try
             {
-                m.Id = cmbMarca.SelectedIndex;
-                a.Caja = Int32.Parse(txtCaja.Text);
-                a.Clave = txtClave.Text;
-                a.Codigo = txtCodigo.Text;
-                a.Descripcion = txtDescripcion.Text;
-                a.Precio = Double.Parse(txtPrecio.Text);
-                a.Marca = m;
-                CA.AddArticulo(a);
+                if (cmbMarca.SelectedIndex != 0)
+                {
+                    m.Id = cmbMarca.SelectedIndex;
+                    a.Caja = Int32.Parse(txtCaja.Text);
+                    a.Clave = txtClave.Text;
+                    a.Codigo = txtCodigo.Text;
+                    a.Descripcion = txtDescripcion.Text;
+                    a.Precio = Double.Parse(txtPrecio.Text);
+                    a.Marca = m;
+                    CA.AddArticulo(a);
 
+                }
+                Close();
             }
-            
-            Close();
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
         }
     }
 }

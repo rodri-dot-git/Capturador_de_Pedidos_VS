@@ -41,22 +41,29 @@ namespace Capturador_de_pedidos.Vista
 
         private void dgrPedidosBusqueda_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (dgrPedidosBusqueda.SelectedItems != null)
+            try
             {
-                int v = 0;
-                try
+                if (dgrPedidosBusqueda.SelectedItems != null)
                 {
-                    DataGrid dataGrid = sender as DataGrid;
-                    Venta rowView = (Venta)dataGrid.SelectedItem;
-                    if (rowView != null) v = rowView.Folio;
+                    int v = 0;
+                    try
+                    {
+                        DataGrid dataGrid = sender as DataGrid;
+                        Venta rowView = (Venta)dataGrid.SelectedItem;
+                        if (rowView != null) v = rowView.Folio;
+                    }
+                    catch { }
+
+                    if (v != 0)
+                    {
+                        ResultadosBusqueda RB = new ResultadosBusqueda(v);
+                        RB.Show();
+                    }
                 }
-                catch { }
-                
-                if (v != 0)
-                {
-                    ResultadosBusqueda RB = new ResultadosBusqueda(v);
-                    RB.Show();
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
             }
         }
 
@@ -65,28 +72,35 @@ namespace Capturador_de_pedidos.Vista
             ControladorVenta CV = new ControladorVenta();
             ObservableCollection<Venta> temp = new ObservableCollection<Venta>();
             double tot = 0;
-            if (!nombre && fecha)
+            try
             {
-                temp = CV.BuscarPorFecha(date1.SelectedDate.Value.Date,
-                date2.SelectedDate.Value.Date);
+                if (!nombre && fecha)
+                {
+                    temp = CV.BuscarPorFecha(date1.SelectedDate.Value.Date,
+                    date2.SelectedDate.Value.Date);
+                }
+                if (nombre && !fecha && cmbCliente.SelectedItem != null)
+                {
+                    temp = CV.BuscarPorNombre(cmbCliente.SelectedItem.ToString());
+                }
+                if (nombre && fecha && cmbCliente.SelectedItem != null)
+                {
+                    temp = CV.BuscarPorNombreFecha(cmbCliente.SelectedItem.ToString(), date1.SelectedDate.Value.Date,
+                    date2.SelectedDate.Value.Date);
+                }
+                dgrPedidosBusqueda.ItemsSource = temp;
+                for (int i = 0; i < temp.Count; i++)
+                {
+                    tot += temp.ElementAt(i).Total;
+                }
+                tot = Math.Round(tot, 2);
+                txtTotal.Text = tot.ToString();
             }
-            if (nombre && !fecha && cmbCliente.SelectedItem != null)
+            catch (Exception ex)
             {
-                temp = CV.BuscarPorNombre(cmbCliente.SelectedItem.ToString());
+                MessageBox.Show("Error: " + ex.Message, "Error");
             }
-            if (nombre && fecha && cmbCliente.SelectedItem != null)
-            {
-                temp = CV.BuscarPorNombreFecha(cmbCliente.SelectedItem.ToString(), date1.SelectedDate.Value.Date,
-                date2.SelectedDate.Value.Date);
-            }
-            dgrPedidosBusqueda.ItemsSource = temp;
-            for(int i = 0; i < temp.Count; i++)
-            {
-                tot += temp.ElementAt(i).Total;
-            }
-            tot = Math.Round(tot, 2);
-            txtTotal.Text = tot.ToString();
-            
+
         }
     }
 }

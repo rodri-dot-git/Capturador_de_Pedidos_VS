@@ -46,26 +46,41 @@ namespace Capturador_de_pedidos.Controlador
             Conexion conn = new Conexion();
             DataTableReader reader;
             List<SqlParameter> _Parametros = new List<SqlParameter>();
-            conn.Conectar();
-            _Parametros.Add(new SqlParameter("@param", param));
-            conn.PrepararProcedimiento("dbo.sp_SelectArticulo", _Parametros);
-            reader = conn.EjecutarTableReader();
-            if (reader.HasRows)
+            try
             {
-                reader.Read();
-                objA.Id = Int32.Parse(reader["IdArticulo"].ToString());
-                objA.Codigo = reader["Codigo"].ToString();
-                objA.Descripcion = reader["Descripcion"].ToString();
-                objA.Precio = Double.Parse(reader["Precio"].ToString());
-                objM.Id = Int32.Parse(reader["IdMarca"].ToString());
-                objM.Nombre = reader["Nombre"].ToString();
-                objA.Marca = objM;
-                reader.Close();
+                conn.Conectar();
+                _Parametros.Add(new SqlParameter("@param", param));
+                conn.PrepararProcedimiento("dbo.sp_SelectArticulo", _Parametros);
+                reader = conn.EjecutarTableReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    objA.Id = Int32.Parse(reader["IdArticulo"].ToString());
+                    objA.Codigo = reader["Codigo"].ToString();
+                    objA.Descripcion = reader["Descripcion"].ToString();
+                    objA.Precio = Double.Parse(reader["Precio"].ToString());
+                    objM.Id = Int32.Parse(reader["IdMarca"].ToString());
+                    objM.Nombre = reader["Nombre"].ToString();
+                    objA.Marca = objM;
+                    reader.Close();
+                }
+                else
+                {
+                    objA = null;
+                    MessageBox.Show("Articulo no encontrado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-            else
+            catch (SqlException ex)
             {
-                objA = null;
-                MessageBox.Show("Articulo no encontrado", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
+            finally
+            {
+                conn.Desconectar();
             }
 
             return objA;
@@ -77,19 +92,34 @@ namespace Capturador_de_pedidos.Controlador
             Conexion conn = new Conexion();
             DataTableReader reader;
             List<SqlParameter> _Parametros = new List<SqlParameter>();
-            conn.Conectar();
-            _Parametros.Add(new SqlParameter("@param", param));
-            conn.PrepararProcedimiento("dbo.sp_SelectArticuloLike", _Parametros);
-            reader = conn.EjecutarTableReader();
-            if (reader.HasRows)
+            try
             {
-                reader.Read();
-                objA.Descripcion = reader["Descripcion"].ToString();
-                reader.Close();
+                conn.Conectar();
+                _Parametros.Add(new SqlParameter("@param", param));
+                conn.PrepararProcedimiento("dbo.sp_SelectArticuloLike", _Parametros);
+                reader = conn.EjecutarTableReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    objA.Descripcion = reader["Descripcion"].ToString();
+                    reader.Close();
+                }
+                else
+                {
+                    objA.Descripcion = "No encontrado";
+                }
             }
-            else
+            catch (SqlException ex)
             {
-                objA.Descripcion = "No encontrado";
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
+            finally
+            {
+                conn.Desconectar();
             }
 
             return objA.Descripcion;

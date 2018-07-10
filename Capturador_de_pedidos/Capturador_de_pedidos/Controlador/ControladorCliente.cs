@@ -18,27 +18,52 @@ namespace Capturador_de_pedidos.Controlador
         {
             List<SqlParameter> _Parametros = new List<SqlParameter>();
             Conexion conn = new Conexion();
-            conn.Conectar();
-            _Parametros.Add(new SqlParameter("@nom", c));
-            conn.PrepararProcedimiento("sp_InsertCliente", _Parametros);
-            conn.EjecutarProcedimiento();
-
-            MessageBox.Show("Se agrego a: " + c, "Cliente", MessageBoxButton.OK);
+            try
+            {
+                conn.Conectar();
+                _Parametros.Add(new SqlParameter("@nom", c));
+                conn.PrepararProcedimiento("sp_InsertCliente", _Parametros);
+                conn.EjecutarProcedimiento();
+                MessageBox.Show("Se agrego a: " + c, "Cliente", MessageBoxButton.OK);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
+            finally
+            {
+                conn.Desconectar();
+            }
         }
         public int BuscaId(String param)
         {
             int id = 0;
             string connS = ConfigurationManager.ConnectionStrings["Capturador_de_pedidos.Properties.Settings.DatabaseConnectionString"].ToString();
-            SqlConnection conn = new SqlConnection(connS);
-            List<SqlParameter> _iParametros = new List<SqlParameter>();
-            String sqlConsulta = "SELECT IdCliente FROM Cliente WHERE Nombre = '" + param + "'";
-            conn.Open();
-            SqlCommand comando = new SqlCommand(sqlConsulta, conn);
-            SqlDataReader reader = comando.ExecuteReader();
-            reader.Read();
-            id = Int32.Parse(reader["IdCliente"].ToString());
-            reader.Close();
-            conn.Close();
+            try
+            {
+                SqlConnection conn = new SqlConnection(connS);
+                List<SqlParameter> _iParametros = new List<SqlParameter>();
+                String sqlConsulta = "SELECT IdCliente FROM Cliente WHERE Nombre = '" + param + "'";
+                conn.Open();
+                SqlCommand comando = new SqlCommand(sqlConsulta, conn);
+                SqlDataReader reader = comando.ExecuteReader();
+                reader.Read();
+                id = Int32.Parse(reader["IdCliente"].ToString());
+                reader.Close();
+                conn.Close();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
             return id;
         }
         public List<String> GetAllClientes()
@@ -47,13 +72,28 @@ namespace Capturador_de_pedidos.Controlador
             DataTableReader reader;
             List<SqlParameter> _Parametros = new List<SqlParameter>();
             Conexion conn = new Conexion();
-            conn.Conectar();
-            conn.PrepararProcedimiento("sp_GetAllClients", _Parametros);
-            conn.EjecutarProcedimiento();
-            reader = conn.EjecutarTableReader();
-            while (reader.Read())
+            try
             {
-                nombres.Add(reader["Nombre"].ToString());
+                conn.Conectar();
+                conn.PrepararProcedimiento("sp_GetAllClients", _Parametros);
+                conn.EjecutarProcedimiento();
+                reader = conn.EjecutarTableReader();
+                while (reader.Read())
+                {
+                    nombres.Add(reader["Nombre"].ToString());
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
+            }
+            finally
+            {
+                conn.Desconectar();
             }
             return nombres;
         }
