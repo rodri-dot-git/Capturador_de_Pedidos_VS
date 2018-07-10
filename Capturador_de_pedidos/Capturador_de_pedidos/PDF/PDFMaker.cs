@@ -12,7 +12,7 @@ using Capturador_de_pedidos.Modelo;
 using iTextSharp;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
-
+// Clase de metodos para la creacion de documento pdf de pedidos
 namespace Capturador_de_pedidos.PDF
 {
     class PDFMaker

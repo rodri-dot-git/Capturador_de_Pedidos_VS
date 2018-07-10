@@ -22,7 +22,7 @@
             <TextBox x:Name="txtCodigo" HorizontalAlignment="Left" Height="23" Margin="155,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" AcceptsTab="True" TabIndex="1" KeyUp="txtCodigo_KeyUp"/>
             <TextBox x:Name="txtCantidad" HorizontalAlignment="Left" Height="23" Margin="440,100,0,0" Grid.Row="1" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="75" BorderBrush="White" TabIndex="2"/>
             <Button x:Name="btnMenos" Content="-" HorizontalAlignment="Left" Margin="410,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="30" Height="23" BorderBrush="White" Background="White" IsTabStop="False" Click="btnMenos_Click"/>
-            <Button x:Name="btnMas" Content="+" HorizontalAlignment="Left" Margin="515,100,813,105" Grid.Row="1" VerticalAlignment="Top" Width="30" Height="23" Background="White" BorderBrush="White" AutomationProperties.HelpText="Incrementar cantidad" IsTabStop="False" Click="btnMas_Click"/>
+            <Button x:Name="btnMas" Content="+" HorizontalAlignment="Left" Margin="515,100,0,0" Grid.Row="1" VerticalAlignment="Top" Width="30" Height="23" Background="White" BorderBrush="White" AutomationProperties.HelpText="Incrementar cantidad" IsTabStop="False" Click="btnMas_Click"/>
             <Label Content="Precio" HorizontalAlignment="Left" Margin="83,151,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="52"/>
             <TextBox x:Name="txtPrecio" HorizontalAlignment="Left" Height="23" Margin="155,151,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="140" IsReadOnly="True" IsReadOnlyCaretVisible="True"/>
             <TextBox x:Name="txtSubTotal" HorizontalAlignment="Left" Height="23" Margin="691,102,0,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="80" IsReadOnly="True" IsTabStop="False" IsReadOnlyCaretVisible="True"/>
@@ -31,7 +31,7 @@
             <Label Content="Sub-Total" HorizontalAlignment="Left" Margin="602,99,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="80"/>
             <Label Content="I.V.A." HorizontalAlignment="Left" Margin="630,131,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="52"/>
             <Label Content="Total" HorizontalAlignment="Left" Margin="630,161,0,0" Grid.Row="1" VerticalAlignment="Top" Height="30" Width="52"/>
-            <Button x:Name="btnAgregar" Content="Agregar Elemento" HorizontalAlignment="Left" Height="42" Margin="340,146,0,0" Grid.Row="1" VerticalAlignment="Top" Width="220" Click="btnAgregar_Click"/>
+            <Button TabIndex="3" x:Name="btnAgregar" Content="Agregar Elemento" HorizontalAlignment="Left" Height="42" Margin="340,146,0,0" Grid.Row="1" VerticalAlignment="Top" Width="220" Click="btnAgregar_Click"/>
             <Button x:Name="btnGuardar" Content="Guardar" HorizontalAlignment="Left" Margin="800,136,0,0" Grid.Row="1" VerticalAlignment="Top" Width="100" IsTabStop="False" Height="54" Click="btnGuardar_Click"/>
             <DataGrid x:Name="dgrPedido" HorizontalAlignment="Left" Height="429" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="1262" Background="#FFAEAEAE" AutoGenerateColumns="False" CellEditEnding="dgrPedido_CellEditEnding" PreparingCellForEdit="dgrPedido_PreparingCellForEdit" MouseUp="dgrPedido_MouseUp" KeyUp="dgrPedido_KeyUp" SourceUpdated="dgrPedido_SourceUpdated" CurrentCellChanged="dgrPedido_CurrentCellChanged">
                 <DataGrid.Columns>
