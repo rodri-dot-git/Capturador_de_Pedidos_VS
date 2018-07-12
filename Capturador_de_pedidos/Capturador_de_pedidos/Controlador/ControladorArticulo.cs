@@ -72,11 +72,11 @@ namespace Capturador_de_pedidos.Controlador
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error");
+                MessageBox.Show("Error:  Constrolador articulos " + ex.Message, "Error");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error");
+                MessageBox.Show("Error: Constrolador articulos " + ex.Message, "Error");
             }
             finally
             {
@@ -111,11 +111,11 @@ namespace Capturador_de_pedidos.Controlador
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error");
+                MessageBox.Show("Error: Constrolador articulos " + ex.Message, "Error");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error");
+                MessageBox.Show("Error: Constrolador articulos " + ex.Message, "Error");
             }
             finally
             {
